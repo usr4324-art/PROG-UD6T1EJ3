@@ -37,10 +37,18 @@ public class App {
             }
         }
 
+        double mediaHoras = (double) totalHoras / totalJuegos;
 
-
-
-
+        try (PrintWriter pw = new PrintWriter(new FileWriter("resumen_videojuegos.txt"))) {
+            pw.println("--- INFORME DE VIDEOJUEGOS ---");
+            pw.println("Total de juegos: " + totalJuegos);
+            pw.println("Total horas: " + totalHoras);
+            pw.printf("Media de horas: %.2f%n", mediaHoras);
+            pw.println("Juego más jugado: " + masJugado.getTitulo() + " (" + masJugado.getHorasJugadas() + "h)");
+            registrarLog("Informe resumen generado con éxito.");
+        } catch (IOException e) {
+            registrarLog("ERROR al generar resumen: " + e.getMessage());
+        }
         
     }
 
