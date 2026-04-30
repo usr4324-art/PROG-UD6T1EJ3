@@ -26,6 +26,18 @@ public class App {
         }
 
 
+        int totalJuegos = lista.size();
+        int totalHoras = 0;
+        Videojuego masJugado = lista.get(0);
+
+        for (Videojuego v : lista) {
+            totalHoras += v.getHorasJugadas();
+            if (v.getHorasJugadas() > masJugado.getHorasJugadas()) {
+                masJugado = v;
+            }
+        }
+
+
 
 
 
